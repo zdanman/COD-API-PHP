@@ -4,8 +4,7 @@ class CodAPI
 {
 	private $endpoints = [
 		'validate' => 'https://callofdutytracker.com/ajax/post',
-		'userstats' => 'https://callofdutytracker.com/stats/%s/%s/%s',
-		'webstats' => 'https://callofdutytracker.com/stats',
+		'userstats' => 'https://callofdutytracker.com/api/stats/%s/%s/%s',
 	];
 
 	public function validateUser($username = '', $game = '', $platform = '')
