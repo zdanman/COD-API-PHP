@@ -3,13 +3,13 @@
 class CodAPI
 {
 	private $endpoints = [
-		'validate' => 'https://callofdutytracker.com/ajax/post',
+		'validate' => 'https://callofdutytracker.com/api/validate/%s/%s/%s',
 		'userstats' => 'https://callofdutytracker.com/api/stats/%s/%s/%s',
 	];
 
 	public function validateUser($username = '', $game = '', $platform = '')
 	{
-		$data = $this->post('validate', ['type' => 'validateUser', 'username' => $username, 'game' => $game, 'platform' => $platform]);
+		$data = $this->post('validate', '', $username, $game, $platform);
 
 		if(strtolower($data) == strtolower($username)) 
 		{
