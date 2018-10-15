@@ -5,11 +5,12 @@ class CodAPI
 	private $endpoints = [
 		'validate' => 'https://callofdutytracker.com/api/validate/%s/%s/%s',
 		'userstats' => 'https://callofdutytracker.com/api/stats/%s/%s/%s',
+		'leaderboard' => 'https://callofdutytracker.com/api/leaderboard/%s/%s/%s?rows=%s',
 	];
 
 	public function validateUser($username = '', $game = '', $platform = '')
 	{
-		$data = $this->post('validate', '', $username, $game, $platform);
+		$data = $this->post('validate', $username, $game, $platform);
 
 		if(strtolower($data) == strtolower($username)) 
 		{
@@ -23,7 +24,7 @@ class CodAPI
 
 	public function getStats($username = '', $game = '', $platform = '')
 	{
-		$data = $this->post('userstats', '', $username, $game, $platform);
+		$data = $this->post('userstats', $username, $game, $platform);
 
 		if(isset($data->status) && $data->status == 'error') 
 		{
@@ -35,24 +36,32 @@ class CodAPI
 		}
 	}
 
-	private function post($endpoint, $fields, $username = '', $game = '', $platform = '')
+	public function getLeaderboard($game = '', $platform = '', $scope = '', $rows = 100)
+	{
+		$data = $this->post('leaderboard', $game, $platform, $scope, $rows);
+
+		if(isset($data->status) && $data->status == 'error') 
+		{
+			return $data->msg;
+		}
+		else
+		{
+			return $data;
+		}
+	}
+
+	private function post($endpoint, $fields, $username = '', $game = '', $platform = '', $extra = '')
 	{
 		$ch = curl_init();
 
-		curl_setopt($ch, CURLOPT_URL, sprintf($this->endpoints[$endpoint], $game, $username, $platform));
+		curl_setopt($ch, CURLOPT_URL, sprintf($this->endpoints[$endpoint], $game, $username, $platform, $extra));
 
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
-		curl_setopt($ch, CURLOPT_POST, 1); 
-
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 			'Content-Length: ' . strlen($fields),
 		));
-
-		if(is_array($fields)) {
-			curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($fields));
-		}
 
 		$output = curl_exec($ch);
 
