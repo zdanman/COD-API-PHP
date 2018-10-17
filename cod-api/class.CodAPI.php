@@ -10,7 +10,7 @@ class CodAPI
 
 	public function validateUser($username = '', $game = '', $platform = '')
 	{
-		$data = $this->post('validate', $username, $game, $platform);
+		$data = $this->get('validate', $username, $game, $platform);
 
 		if(strtolower($data) == strtolower($username)) 
 		{
@@ -24,7 +24,7 @@ class CodAPI
 
 	public function getStats($username = '', $game = '', $platform = '')
 	{
-		$data = $this->post('userstats', $username, $game, $platform);
+		$data = $this->get('userstats', $username, $game, $platform);
 
 		if(isset($data->status) && $data->status == 'error') 
 		{
@@ -38,7 +38,7 @@ class CodAPI
 
 	public function getLeaderboard($game = '', $platform = '', $scope = '', $rows = 100)
 	{
-		$data = $this->post('leaderboard', $game, $platform, $scope, $rows);
+		$data = $this->get('leaderboard', $game, $platform, $scope, $rows);
 
 		if(isset($data->status) && $data->status == 'error') 
 		{
@@ -50,7 +50,7 @@ class CodAPI
 		}
 	}
 
-	private function post($endpoint, $fields, $username = '', $game = '', $platform = '', $extra = '')
+	private function get($endpoint, $fields, $username = '', $game = '', $platform = '', $extra = '')
 	{
 		$ch = curl_init();
 
