@@ -12,7 +12,7 @@ class CodAPI
 	{
 		$data = $this->get('validate', $username, $game, $platform);
 
-		if(strtolower($data) == strtolower($username)) 
+		if(isset($data->username) && strtolower($data->username) == strtolower($username)) 
 		{
 			return true;
 		} 
