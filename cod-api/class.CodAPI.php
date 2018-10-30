@@ -3,9 +3,9 @@
 class CodAPI
 {
 	private $endpoints = [
-		'validate' => 'https://callofdutytracker.com/api/validate/%s/%s/%s',
-		'userstats' => 'https://callofdutytracker.com/api/stats/%s/%s/%s',
-		'leaderboard' => 'https://callofdutytracker.com/api/leaderboard/%s/%s/%s?rows=%s',
+		'validate' => 'https://cod-api.theapinetwork.com/api/validate/%s/%s/%s',
+		'userstats' => 'https://cod-api.theapinetwork.com/api/stats/%s/%s/%s',
+		'leaderboard' => 'https://cod-api.theapinetwork.com/api/leaderboard/%s/%s/%s?rows=%s',
 	];
 
 	public function validateUser($username = '', $game = '', $platform = '')
