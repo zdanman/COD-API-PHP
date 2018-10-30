@@ -6,6 +6,7 @@ Battle.net, PSN, XBL and Steam are supported.
 Endpoints:
 
 https://cod-api.theapinetwork.com/api/validate/:game:/:username:/:platform: -- Validate if the account is real
+
 https://cod-api.theapinetwork.com/api/stats/:game:/:username:/:platform: -- Get the stats
 
 Docs: https://callofdutytracker.com/site-api
