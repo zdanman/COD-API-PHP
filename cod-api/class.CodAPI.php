@@ -4,7 +4,8 @@ class CodAPI
 {
 	private $endpoints = [
 		'validate' => 'https://cod-api.theapinetwork.com/api/validate/%s/%s/%s',
-		'userstats' => 'https://cod-api.theapinetwork.com/api/stats/%s/%s/%s',
+		'userstats_pvp' => 'https://cod-api.theapinetwork.com/api/stats/%s/%s/%s',
+		'userstats_mp' => 'https://cod-api.theapinetwork.com/api/stats/%s/%s/%s?type=blackout',
 		'recentmatches' => 'https://cod-api.theapinetwork.com/api/matches/recent?rows=%s',
 		'uidtousername' => 'https://cod-api.theapinetwork.com/api/users/ids?id=:id1:&id=:id2',
 		'smartsearch' => 'https://cod-api.theapinetwork.com/api/users/smartSearch?username=%s&platform=%s&game=%s',
@@ -26,9 +27,9 @@ class CodAPI
 		}
 	}
 
-	public function getStats($username = '', $game = '', $platform = '')
+	public function getStats($username = '', $game = '', $platform = '', $type = 'mp')
 	{
-		$data = $this->get('userstats', $username, $game, $platform);
+		$data = $this->get('userstats_' . $type, $username, $game, $platform);
 
 		if(isset($data->status) && $data->status == 'error') 
 		{
