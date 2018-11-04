@@ -5,6 +5,9 @@ class CodAPI
 	private $endpoints = [
 		'validate' => 'https://cod-api.theapinetwork.com/api/validate/%s/%s/%s',
 		'userstats' => 'https://cod-api.theapinetwork.com/api/stats/%s/%s/%s',
+		'recentmatches' => 'https://cod-api.theapinetwork.com/api/matches/recent?rows=%s',
+		'uidtousername' => 'https://cod-api.theapinetwork.com/api/users/ids?id=:id1:&id=:id2',
+		'insights' => 'https://cod-api.theapinetwork.com/api/worldwide/stats',
 		'leaderboard' => 'https://cod-api.theapinetwork.com/api/leaderboard/%s/%s/%s?rows=%s',
 	];
 
@@ -25,6 +28,34 @@ class CodAPI
 	public function getStats($username = '', $game = '', $platform = '')
 	{
 		$data = $this->get('userstats', $username, $game, $platform);
+
+		if(isset($data->status) && $data->status == 'error') 
+		{
+			return $data->msg;
+		}
+		else
+		{
+			return $data;
+		}
+	}
+
+	public function getRecentMatches($rows = 100)
+	{
+		$data = $this->get('recentmatches', $rows);
+
+		if(isset($data->status) && $data->status == 'error') 
+		{
+			return $data->msg;
+		}
+		else
+		{
+			return $data;
+		}
+	}
+
+	public function getInsights()
+	{
+		$data = $this->get('insights');
 
 		if(isset($data->status) && $data->status == 'error') 
 		{
