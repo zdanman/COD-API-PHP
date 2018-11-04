@@ -2,6 +2,7 @@
 Call of Duty API (Black ops 3 &amp; 4, Infinite Warfare and World War II)
 
 Battle.net, PSN, XBL and Steam are supported.
+BLACK OUT IS ALSO SUPPORTED!
 
 * get worldwide recent matches, including the players.
 * get worldwide insights (what rank or prestige are most players?)
