@@ -9,6 +9,7 @@ Battle.net, PSN, XBL and Steam are supported.
 * stats
 * leaderboards
 * smart search: search your account in a big database! (currently 1.000.000+ users)
+
 and more is coming :)
 
 Docs: https://bo4tracker.com/site-api
