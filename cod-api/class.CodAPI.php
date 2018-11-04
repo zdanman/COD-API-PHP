@@ -7,6 +7,7 @@ class CodAPI
 		'userstats' => 'https://cod-api.theapinetwork.com/api/stats/%s/%s/%s',
 		'recentmatches' => 'https://cod-api.theapinetwork.com/api/matches/recent?rows=%s',
 		'uidtousername' => 'https://cod-api.theapinetwork.com/api/users/ids?id=:id1:&id=:id2',
+		'smartsearch' => 'https://cod-api.theapinetwork.com/api/users/smartSearch?username=%s&platform=%s&game=%s',
 		'insights' => 'https://cod-api.theapinetwork.com/api/worldwide/stats',
 		'leaderboard' => 'https://cod-api.theapinetwork.com/api/leaderboard/%s/%s/%s?rows=%s',
 	];
