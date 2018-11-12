@@ -15,4 +15,4 @@ and more is coming :)
 
 Docs: https://bo4tracker.com/site-api
 
-Powered by Call Of Duty Tracker.com
+Powered & created by Call Of Duty Tracker.com
