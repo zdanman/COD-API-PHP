@@ -83,8 +83,10 @@ class CodAPI
 		}
 	}
 
-	private function get($endpoint, $fields, $username = '', $game = '', $platform = '', $extra = '')
+	private function get($endpoint, /*$fields,*/ $username = '', $game = '', $platform = '', $extra = '')
 	{
+		$username = str_replace('#', "%23", $username); // must replace battle.net # with %23
+		
 		$ch = curl_init();
 
 		curl_setopt($ch, CURLOPT_URL, sprintf($this->endpoints[$endpoint], $game, $username, $platform, $extra));
@@ -92,9 +94,9 @@ class CodAPI
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+		/*curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 			'Content-Length: ' . strlen($fields),
-		));
+		));*/
 
 		$output = curl_exec($ch);
 
