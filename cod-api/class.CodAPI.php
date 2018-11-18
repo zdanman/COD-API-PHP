@@ -83,7 +83,7 @@ class CodAPI
 		}
 	}
 
-	private function get($endpoint, $fields, $username = '', $game = '', $platform = '', $extra = '')
+	private function get($endpoint, /*$fields,*/ $username = '', $game = '', $platform = '', $extra = '')
 	{
 		$ch = curl_init();
 
@@ -92,9 +92,9 @@ class CodAPI
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+		/*curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 			'Content-Length: ' . strlen($fields),
-		));
+		));*/
 
 		$output = curl_exec($ch);
 
